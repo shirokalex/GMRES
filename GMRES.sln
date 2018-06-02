@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMRES", "GMRES\GMRES.csproj", "{CCFE44D1-A323-4403-92C5-5D77DDF95F01}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMRES.Console", "GMRES.Console\GMRES.Console.csproj", "{E2164530-FEA5-4C8F-A560-75306B8FD1D8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMRES.Tests", "GMRES.Tests\GMRES.Tests.csproj", "{566ABE0F-17C4-48EE-B4C8-171995A36C4C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCFE44D1-A323-4403-92C5-5D77DDF95F01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCFE44D1-A323-4403-92C5-5D77DDF95F01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCFE44D1-A323-4403-92C5-5D77DDF95F01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCFE44D1-A323-4403-92C5-5D77DDF95F01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2164530-FEA5-4C8F-A560-75306B8FD1D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2164530-FEA5-4C8F-A560-75306B8FD1D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2164530-FEA5-4C8F-A560-75306B8FD1D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2164530-FEA5-4C8F-A560-75306B8FD1D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{566ABE0F-17C4-48EE-B4C8-171995A36C4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{566ABE0F-17C4-48EE-B4C8-171995A36C4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{566ABE0F-17C4-48EE-B4C8-171995A36C4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{566ABE0F-17C4-48EE-B4C8-171995A36C4C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D3730323-29BE-4012-B637-AE4A8ACF8927}
+	EndGlobalSection
+EndGlobal

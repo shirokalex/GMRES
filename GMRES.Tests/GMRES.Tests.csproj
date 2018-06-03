@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.3.0" />
+    <PackageReference Include="MathNet.Numerics.Data.Text" Version="4.0.0" />
     <PackageReference Include="NUnit" Version="3.10.1" />
   </ItemGroup>
 
@@ -14,7 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="matrix.txt">
+    <None Update="matrix.mtx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="vector.mtx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="vector.txt">

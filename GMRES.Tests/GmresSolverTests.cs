@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using FluentAssertions;
+using MathNet.Numerics.Data.Text;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
 using NUnit.Framework;
@@ -42,8 +43,8 @@ namespace GMRES.Tests
         [Test]
         public void Should_solve_tridiagonal_matrix_system()
         {
-            var a = FileHelper.LoadMatrixFromFile("matrix.txt");
-            var b = FileHelper.LoadVectorFromFile("vector.txt");
+            var a = MatrixMarketReader.ReadMatrix<double>("matrix.mtx");
+            var b = MatrixMarketReader.ReadVector<double>("vector.mtx");
 
             var result = GmresSolver.Solve(a, b, 15, 1);
             result.IsConverged.Should().BeTrue();

@@ -12,18 +12,19 @@ namespace GMRES
     public static class GmresSolver
     {
         public const double DefaultEpsilon = 1e-6;
-        public const int DefaultDegreeOfParallelism = -1;
 
-        public static GmresResult Solve(Matrix<double> A, Vector<double> b, int? maxInnerIterations = null, int? maxOuterIterations = null, double epsilon = DefaultEpsilon, Vector<double> x0 = null, int degreeOfParallelism = DefaultDegreeOfParallelism)
+        public static GmresResult Solve(Matrix<double> A, Vector<double> b, int? maxInnerIterations = null, int? maxOuterIterations = null, double epsilon = DefaultEpsilon, Vector<double> x0 = null, int? degreeOfParallelism = null)
         {
             Validate(A, b, ref maxInnerIterations, ref maxOuterIterations, ref degreeOfParallelism);
             x0 = x0 ?? new DenseVector(Enumerable.Repeat(0.0, b.Count).ToArray());
+
+            Control.MaxDegreeOfParallelism = degreeOfParallelism.Value;
 
             var x = x0.Clone();
             var errors = new List<double>();
             for (var i = 0; i < maxOuterIterations; i++)
             {
-                var iterationResult = MakeInnerIterations(A, b, x, maxInnerIterations.Value, epsilon, degreeOfParallelism);
+                var iterationResult = MakeInnerIterations(A, b, x, maxInnerIterations.Value, epsilon, degreeOfParallelism.Value);
                 x = iterationResult.x;
                 errors.AddRange(iterationResult.Errors);
 
@@ -33,7 +34,7 @@ namespace GMRES
             return new GmresResult(x, false, maxOuterIterations.Value, maxInnerIterations.Value, errors.ToArray());
         }
 
-        private static void Validate(Matrix<double> A, Vector<double> b, ref int? maxInnerIterations, ref int? maxOuterIterations, ref int degreeOfParallelism)
+        private static void Validate(Matrix<double> A, Vector<double> b, ref int? maxInnerIterations, ref int? maxOuterIterations, ref int? degreeOfParallelism)
         {
             if (A.RowCount != A.ColumnCount)
                 throw new ArgumentException("Coeffitient matrix must be square");
@@ -50,7 +51,7 @@ namespace GMRES
             if (maxInnerIterations < 1)
                 maxOuterIterations = 1;
 
-            degreeOfParallelism = degreeOfParallelism != DefaultDegreeOfParallelism ? degreeOfParallelism : Control.MaxDegreeOfParallelism;
+            degreeOfParallelism = degreeOfParallelism ?? Control.MaxDegreeOfParallelism;
         }
 
         private static (Vector<double> x, bool IsConverged, int InnerIterations, List<double> Errors) MakeInnerIterations(Matrix<double> A, Vector<double> b, Vector<double> x0, int maxInnerIterations, double epsilon, int degreeOfParallelism)

@@ -26,8 +26,8 @@ namespace GMRES.ConsoleApp
         [Option('e', "epsilon", Default = GmresSolver.DefaultEpsilon, HelpText = "Convergence threshold")]
         public double Epsilon { get; set; }
 
-        [Option('n', Default = GmresSolver.DefaultDegreeOfParallelism, HelpText = "Degree of parallelism (thread count)")]
-        public int DegreeOfParallelism { get; set; }
+        [Option('n', Default = null, HelpText = "Degree of parallelism (thread count)")]
+        public int? DegreeOfParallelism { get; set; }
     }
 
     public static class Program

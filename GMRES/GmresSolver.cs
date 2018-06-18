@@ -43,8 +43,8 @@ namespace GMRES
             maxInnerIterations = maxInnerIterations ?? Math.Min(b.Count, 10);
             if (maxInnerIterations < 1)
                 maxInnerIterations = 1;
-            if (maxInnerIterations > A.RowCount - 1)
-                maxInnerIterations = A.RowCount - 1;
+            if (maxInnerIterations > A.RowCount)
+                maxInnerIterations = A.RowCount;
 
             maxOuterIterations = maxOuterIterations ?? Math.Min(b.Count / maxInnerIterations.Value, 10);
             if (maxInnerIterations < 1)
@@ -63,7 +63,6 @@ namespace GMRES
             var error = r0.Norm(2) / bNorm;
             var errors = new List<double> {error};
             var rotations = new Rotation[m];
-            var e1 = new DenseVector(n) {[0] = 1};
 
             if (error <= epsilon)
                 return (x0.Clone(), true, 0, errors);
@@ -71,7 +70,7 @@ namespace GMRES
             var r0Norm = r0.Norm(2);
             var Q = new DenseMatrix(n, m + 1);
             Q.SetColumn(0, r0 / r0Norm);
-            var beta = r0Norm * e1;
+            var beta = new DenseVector(n + 1) {[0] = r0Norm}; // Use n+1 instead of n - to hold beta[k+1]
 
             var H = new DenseMatrix(m + 1, m);
 

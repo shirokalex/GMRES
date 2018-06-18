@@ -43,8 +43,8 @@ namespace GMRES.Tests
         [Test]
         public void Should_solve_tridiagonal_matrix_system()
         {
-            var a = MatrixMarketReader.ReadMatrix<double>("matrix.mtx");
-            var b = MatrixMarketReader.ReadVector<double>("vector.mtx");
+            var a = MatrixMarketReader.ReadMatrix<double>("matrix1.mtx");
+            var b = MatrixMarketReader.ReadVector<double>("vector1.mtx");
 
             var result = GmresSolver.Solve(a, b, 15, 1);
             result.IsConverged.Should().BeTrue();
@@ -53,6 +53,24 @@ namespace GMRES.Tests
             foreach (var xValue in result.X)
             {
                 xValue.Should().BeApproximately(1.0, GmresSolver.DefaultEpsilon);
+            }
+        }
+
+        [Test]
+        public void Should_solve_dense_matrix_system()
+        {
+            var a = MatrixMarketReader.ReadMatrix<double>("matrix2.mtx");
+            var b = MatrixMarketReader.ReadVector<double>("vector2.mtx");
+
+            var result = GmresSolver.Solve(a, b);
+            result.IsConverged.Should().BeTrue();
+            result.OuterIterations.Should().Be(0);
+            result.InnerIterations.Should().Be(6);
+
+            var expectedX = new[] {-4.0306249, 3.3608880, 3.8133424, -1.0654047, 3.4175426, -2.0298796};
+            for (var i = 0; i < expectedX.Length; i++)
+            {
+                result.X[i].Should().BeApproximately(expectedX[i], GmresSolver.DefaultEpsilon);
             }
         }
 

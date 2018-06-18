@@ -14,12 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="deploy.linux.self-contained.sh" />
-    <None Remove="deploy.linux.sh" />
-    <None Remove="deploy.mac.self-contained.sh" />
-    <None Remove="deploy.mac.sh" />
-    <None Remove="deploy.win.cmd" />
-    <None Remove="deploy.win.self-contained.cmd" />
+    <None Remove="*.cmd" />
+    <None Remove="*.sh" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,1 +1,0 @@
-dotnet publish -c Release -r win-x64 -o ./deploy/GMRES.Console-win-x64-self-contained/

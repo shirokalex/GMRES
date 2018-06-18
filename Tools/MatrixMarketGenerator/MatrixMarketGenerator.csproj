@@ -6,7 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="publish.cmd" />
+    <None Remove="*.cmd" />
+    <None Remove="*.sh" />
   </ItemGroup>
 
   <ItemGroup>

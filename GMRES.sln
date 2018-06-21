@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMRES.Console", "GMRES.Cons
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMRES.Tests", "GMRES.Tests\GMRES.Tests.csproj", "{566ABE0F-17C4-48EE-B4C8-171995A36C4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixMarketGenerator", "MatrixMarketGenerator\MatrixMarketGenerator.csproj", "{AE98BE56-7AA0-4835-9411-BEEE27E80A1F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixMarketGenerator", "Tools\MatrixMarketGenerator\MatrixMarketGenerator.csproj", "{AE98BE56-7AA0-4835-9411-BEEE27E80A1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -6,6 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="*.cmd" />
+    <None Remove="*.sh" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.2.1" />
     <PackageReference Include="MathNet.Numerics.Data.Text" Version="4.0.0" />
   </ItemGroup>
